@@ -1,0 +1,30 @@
+import "./App.css";
+import React from "react";
+import { Switch } from "react-router";
+import { Route } from "react-router-dom";
+import Home from "./components/Home";
+import Pokemons from "./components/Pokemons";
+import Bar from "./components/Bar";
+import CreatePok from "./components/CreatePok";
+import Contenedor from "./components/Contenedor";
+import PokeDetail from "./components/Pokedetail";
+import Order from "./components/Order";
+import SearchBar from "./components/SearchBar";
+
+function App() {
+  return (
+    <div className="App">
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route exact path="/pokemons">
+        <Bar />
+        <Contenedor />
+      </Route>
+      <Route exact path="/pokemons/:id" component={PokeDetail} />
+      <Route exact path="/pokemons/create/poke" component={CreatePok} />
+    </div>
+  );
+}
+
+export default App;

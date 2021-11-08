@@ -1,0 +1,7 @@
+.container {
+  background-color: #bdb2ff;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: 300%;
+}

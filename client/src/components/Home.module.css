@@ -1,0 +1,44 @@
+.back {
+  background-position: center;
+  background-size: cover;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.button {
+  background: linear-gradient(0deg, red 50%, white 50%);
+  padding: 0.5rem;
+  justify-content: center;
+  display: flex;
+  border-radius: 9999px;
+  border-style: solid;
+  border-color: black;
+  border-width: 5px;
+  font: 14px/22px "Lato", Arial, sans-serif;
+  color: white;
+  /* background-color: black; */
+
+  flex-direction: column;
+  gap: 0, 5 rem;
+}
+
+.button:hover {
+  background: linear-gradient(-25deg, white 50%, red 50%);
+  color: white;
+  background-color: black;
+  border-style: solid;
+  border-color: black;
+}
+
+@media screen and (min-width: 576px) {
+  .button {
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    margin: auto;
+    display: flex;
+  }
+}

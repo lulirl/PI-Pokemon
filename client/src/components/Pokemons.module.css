@@ -1,0 +1,38 @@
+.back {
+  background-size: cover;
+  background-position: center;
+}
+
+.cards {
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 150px;
+  color: black;
+}
+@media screen and (min-width: 576px) {
+  .cards {
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+}
+.button {
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 1%;
+  font-size: 16px;
+  border-radius: 15%;
+  width: auto;
+  float: right;
+}
+
+.button:hover {
+  color: white;
+  background-color: black;
+}
