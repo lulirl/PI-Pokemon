@@ -10,11 +10,13 @@ export const SEARCH_TYPES = "SEARCH_TYPES";
 export const POST_POKE = "POST_POKE";
 export const CLEAR_POKE = "CLEAR_POKE";
 export const RESET_POKE = "RESET_POKE";
+export const GO_BACK = "GO_BACK";
+export const TOGGLE_MODE = "TOGGLE_MODE";
 
 export function getPoke() {
   return function (dispatch) {
     axios
-      .get("http://localhost:3001/api/pokemon")
+      .get(`/api/pokemon`)
       .then((pokemons) => {
         dispatch({
           type: GET_POKE,
@@ -30,7 +32,7 @@ export function getPoke() {
 export function searchPoke(search) {
   return function (dispatch) {
     axios
-      .get("http://localhost:3001/api/pokemon/query?name=" + search)
+      .get(`query?name=` + search)
       .then((pokemon) => {
         dispatch({
           type: SEARCH_POKE,
@@ -39,14 +41,18 @@ export function searchPoke(search) {
       })
       .catch((error) => {
         console.log(error);
+        dispatch({
+          type: SEARCH_POKE,
+          payload: [],
+        });
       });
   };
 }
 
-export function sortPoke(order) {
+export function sortPoke(payload) {
   return {
     type: "SORT_POKE",
-    payload: order,
+    payload,
   };
 }
 export function sortAttack(order) {
@@ -72,14 +78,12 @@ export function filterByCreator(payload) {
 export function getDetail(id) {
   return async function (dispatch) {
     try {
-      await axios
-        .get("http://localhost:3001/api/pokemon/" + id)
-        .then((pokemon) => {
-          dispatch({
-            type: "GET_DETAILS",
-            payload: pokemon.data,
-          });
+      await axios.get(`/api/pokemon/` + id).then((pokemon) => {
+        dispatch({
+          type: "GET_DETAILS",
+          payload: pokemon.data,
         });
+      });
     } catch (error) {
       console.log(error);
     }
@@ -88,7 +92,7 @@ export function getDetail(id) {
 export function searchTypes() {
   return function (dispatch) {
     try {
-      axios.get("http://localhost:3001/api/types").then((types) => {
+      axios.get(`/api/types`).then((types) => {
         dispatch({
           type: "SEARCH_TYPES",
           payload: types.data,
@@ -102,14 +106,12 @@ export function searchTypes() {
 export function postPoke(payload) {
   return function (dispatch) {
     try {
-      axios
-        .post("http://localhost:3001/api/pokemon", payload)
-        .then((newPoke) => {
-          dispatch({
-            type: "POST_POKE",
-            payload: newPoke.data,
-          });
+      axios.post(`/api/pokemon`, payload).then((newPoke) => {
+        dispatch({
+          type: "POST_POKE",
+          payload: newPoke.data,
         });
+      });
     } catch (error) {
       console.log(error);
     }
@@ -123,5 +125,16 @@ export function clearPoke() {
 export function resetPoke() {
   return {
     type: "RESET_POKE",
+  };
+}
+export function goToPageOne(payload) {
+  return {
+    type: "GO_BACK",
+    payload,
+  };
+}
+export function toggleMode() {
+  return {
+    type: "TOGGLE_MODE",
   };
 }

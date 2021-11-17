@@ -10,11 +10,19 @@ import {
   POST_POKE,
   CLEAR_POKE,
   RESET_POKE,
+  GO_BACK,
+  TOGGLE_MODE,
 } from "../actions";
 const initialState = {
   pokemons: [],
   filteredPokemons: [],
   types: [],
+  currentPage: 1,
+  nameOrder: "default",
+  attackOrder: "deafult",
+  typeOrder: "default",
+  newOrCreated: "default",
+  darkMode: false,
 };
 
 function rootReducer(state = initialState, action) {
@@ -43,9 +51,12 @@ function rootReducer(state = initialState, action) {
         }
         return 0;
       });
+
       return {
         ...state,
         filteredPokemons: [...orderFilteredPoke],
+        nameOrder: action.payload,
+        attackOrder: "default",
       };
     } else {
       orderedPokemons = orderedPokemons.sort((a, b) => {
@@ -61,6 +72,8 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         filteredPokemons: orderedPokemons,
+        nameOrder: action.payload,
+        attackOrder: "default",
       };
     }
   }
@@ -81,6 +94,8 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         filteredPokemons: [...filter],
+        nameOrder: "default",
+        attackOrder: action.payload,
       };
     } else {
       let orderedPokemons = [...state.pokemons];
@@ -99,6 +114,8 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         filteredPokemons: filterPokes,
+        nameOrder: "default",
+        attackOrder: action.payload,
       };
     }
   }
@@ -111,10 +128,15 @@ function rootReducer(state = initialState, action) {
             (p) =>
               p.types[0] === action.payload || p.types[1] === action.payload
           );
+    // const orderType = action.payload.substring(0);
 
     return {
       ...state,
       filteredPokemons: typeFiltered,
+      attackOrder: "default",
+      nameOrder: "default",
+      typeOrder: action.payload,
+      newOrCreated: "default",
     };
   }
   if (action.type === FILTER_CREATOR) {
@@ -126,6 +148,10 @@ function rootReducer(state = initialState, action) {
       ...state,
       filteredPokemons:
         action.payload === "all" ? state.pokemons : createdFilter,
+      attackOrder: "default",
+      nameOrder: "default",
+      typeOrder: "default",
+      newOrCreated: action.payload,
     };
   }
   if (action.type === GET_DETAILS) {
@@ -155,6 +181,23 @@ function rootReducer(state = initialState, action) {
     return {
       ...state,
       filteredPokemons: [...state.pokemons],
+      nameOrder: "default",
+      attackOrder: "deafult",
+      typeOrder: "default",
+      newOrCreated: "default",
+    };
+  }
+  if (action.type === GO_BACK) {
+    return {
+      ...state,
+      currentPage: action.payload,
+    };
+  }
+  if (action.type === TOGGLE_MODE) {
+    const newDarkMode = !state.darkMode;
+    return {
+      ...state,
+      darkMode: newDarkMode,
     };
   }
   return state;

@@ -1,5 +1,13 @@
-.container {
-  background-color: #bdb2ff;
+.containerLight {
+  background-color: #0077b6;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: 300%;
+}
+
+.containerDark {
+  background-color: #006992;
   display: flex;
   flex-direction: column;
   width: auto;

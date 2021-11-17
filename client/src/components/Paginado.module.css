@@ -13,7 +13,12 @@
 }
 
 .center:hover {
-  background-color: #bdb2ff;
+  background-color: #0077b6;
+  width: auto;
+}
+
+.centerDark:hover {
+  background-color: #5c7aff;
   width: auto;
 }
 .number {
@@ -29,8 +34,23 @@
 }
 .number:hover {
   color: black;
-  background-color: #fdffb6;
+  background-color: white;
   border: black;
+  font-size: 30px;
+  font-weight: 700px;
+}
+
+.numberDark {
+  color: black;
+  background-color: #27476e;
+  font-weight: 500;
+  display: inline-block;
+  padding: 10;
+  margin: 10px;
+  padding: 8px 16px;
+  border: 2px solid black;
+  border-radius: 50%;
+  justify-content: space-around;
   font-size: 30px;
   font-weight: 700px;
 }

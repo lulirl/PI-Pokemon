@@ -4,13 +4,32 @@
   align-items: center;
   cursor: pointer;
   background-color: none;
-  color: white;
   margin-top: 5%;
 }
 
 .name {
   font-weight: 300;
 }
+
 .box {
-  background-color: red;
+  font-weight: 300;
+  border: none;
+  font-size: 18px;
+  background-color: #00b4d8;
+  border-radius: "100px";
+  outline: "none";
+  border: none;
+}
+.boxDark {
+  background-color: #27476e;
+  color: white;
+  font-size: 18px;
+  border-radius: "100px";
+  outline: none;
+  border: none;
+}
+.shadow {
+  align-items: "center";
+  color: "black";
+  box-shadow: "1px 1px 1px";
 }

@@ -35,6 +35,7 @@ img {
   padding-left: 50px;
   padding-right: 50px;
 }
+
 /* On mouse-over, add a deeper shadow */
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.959);
@@ -44,4 +45,11 @@ img {
 .type {
   color: black;
   font-size: 18px;
+}
+
+.dark {
+  background-color: red;
+}
+.light {
+  background-color: pink;
 }

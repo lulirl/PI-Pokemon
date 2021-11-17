@@ -1,7 +1,16 @@
 .container {
   /* background-size: cover;
   background-position: center; */
-  background-color: #fdffb6;
+  background-color: #00b4d8;
+
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: 300%;
+}
+
+.containerDark {
+  background-color: #27476e;
   display: flex;
   flex-direction: column;
   width: auto;

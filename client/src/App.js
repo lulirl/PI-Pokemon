@@ -1,15 +1,14 @@
 import "./App.css";
 import React from "react";
-import { Switch } from "react-router";
+
 import { Route } from "react-router-dom";
 import Home from "./components/Home";
-import Pokemons from "./components/Pokemons";
+
 import Bar from "./components/Bar";
 import CreatePok from "./components/CreatePok";
 import Contenedor from "./components/Contenedor";
 import PokeDetail from "./components/Pokedetail";
-import Order from "./components/Order";
-import SearchBar from "./components/SearchBar";
+import ToggleMode from "./components/ToggleMode";
 
 function App() {
   return (

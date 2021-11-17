@@ -30,7 +30,6 @@ import img from "../img/Venusaur.gif";
 import img1 from "../img/Wailord.gif";
 import im from "../img/Swalot_Female.gif";
 import img2 from "../img/Taillow.gif";
-import img12 from "../img/805197.jpg";
 
 import { NavLink } from "react-router-dom";
 

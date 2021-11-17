@@ -6,8 +6,8 @@ import { searchTypes } from "../actions";
 import { NavLink } from "react-router-dom";
 import { postPoke } from "../actions";
 import { useHistory } from "react-router";
+
 import lab from "../img/lab.jpeg";
-import gif from "../img/pokemon.gif";
 
 import s from "./CreatePoke.module.css";
 function validate(input) {
@@ -61,7 +61,6 @@ export function CreatePok() {
         [e.target.name]: e.target.value,
       })
     );
-    console.log(input);
   }
   function handleSubmit(e) {
     e.preventDefault();
@@ -121,19 +120,21 @@ export function CreatePok() {
 
         <div className={s.center}>
           <div className={s.formbox}>
-            <NavLink
-              style={{ textDecoration: "none" }}
-              className={s.submitBtn}
-              to="/pokemons"
-            >
-              Go Back
+            <NavLink style={{ textDecoration: "none" }} to="/pokemons">
+              {" "}
+              <button className={s.submitBtn}>Go Back</button>
             </NavLink>
+            <br></br>
             <form onSubmit={handleSubmit}>
-              <button className={s.submitBtn} type="submit">
+              <button
+                style={{ textDecoration: "none" }}
+                className={s.submitBtn}
+                type="submit"
+              >
                 Create
               </button>
               <div className={s.field1}>
-                <label className={s.label}>Name</label>
+                <label className={s.label}>Name </label>
                 <input
                   className={s.input}
                   type="text"
