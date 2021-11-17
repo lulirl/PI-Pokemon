@@ -20,10 +20,11 @@ describe("Pokemon routes", () => {
   );
   // describe("GET /api/pokemon", () => {
   //   it("responds with 200", () => agent.get("/api/pokemon").expect(200));
-  //   // it("should get 40 pokemons from the PokeApi", () => {
-  //   //   agent.get("/api/pokemon").expect((res) => {
-  //   //     expect(res.body).to.have.lengthOf(40);
-  //   //   });
+  // it("should get 40 pokemons from the PokeApi", () => {
+  //   agent.get("/api/pokemon").expect((res) => {
+  //     expect(res.body).to.have.lengthOf(40);
+  //   });
+
   describe("POST /api/pokemon", () => {
     it("should respond with 200", () => {
       agent

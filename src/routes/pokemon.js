@@ -11,6 +11,7 @@ const router = Router();
 router.get("/", async (req, res, next) => {
   try {
     let getDb = await Pokemon.findAll({
+      // eager loading
       include: [
         {
           model: Tipo,
@@ -87,7 +88,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/query", async (req, res) => {
+router.get("/query", async (req, res, next) => {
   try {
     let { name } = req.query;
     let findDb = await Pokemon.findAll({
@@ -119,7 +120,7 @@ router.get("/query", async (req, res) => {
     let findApi = await axios.get("https://pokeapi.co/api/v2/pokemon");
     let nextPokes = await axios.get(findApi.data.next);
     findApi.data.results.push(...nextPokes.data.results);
-    let found = findApi.data.results.filter((p) => p.name === name);
+    let found = findApi.data.results.filter((p) => p.name === name); // filter a la api
     if (found.length > 0) {
       let url = found.map((a) => a.url); // junto los url
       let requestUrl = url.map(async (l) => await axios.get(l)); //
@@ -148,7 +149,7 @@ router.get("/query", async (req, res) => {
 
     return res.sendStatus(404);
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 });
 
@@ -183,7 +184,6 @@ router.get("/:id", async (req, res, next) => {
               attack: pokemon.data.stats[1].base_stat,
               defense: pokemon.data.stats[2].base_stat,
               speed: pokemon.data.stats[3].base_stat,
-              // stats: pokemon.data.stats.map((s) => s.stat.name),
             };
           });
 
@@ -211,6 +211,7 @@ router.post("/", async (req, res) => {
       weight,
       img,
     });
+
     if (types.length > 1) {
       let find = await Tipo.findAll({ where: { name: types } });
       console.log(find);

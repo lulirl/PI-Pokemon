@@ -23,4 +23,16 @@ router.get("/", async (req, res) => {
   res.send(tipos);
 });
 
+router.post("/", async (req, res, next) => {
+  try {
+    const { name } = req.body;
+    console.log(name);
+    let newType = await Tipo.create({ name });
+    console.log(newType);
+    res.status(201).send(newType);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
